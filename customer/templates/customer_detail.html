@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Customer Detail
+{% endblock %}
+
+{% block content %}
+
+     <div class="">
+        <h1>Customer Detail</h1>
+        <p>Customer Name: {{ customer.customer_name }}</p>
+        <p>Customer Email: {{ customer.customer_email }}</p>
+        <p>Customer Number: {{ customer.customer_number }}</p>
+        <p>Customer Address: {{ customer.customer_address }}</p>
+     </div>
+
+{% endblock %}
