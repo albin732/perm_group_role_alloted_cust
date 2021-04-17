@@ -23,6 +23,7 @@ def group_required(*group_names):
 def role_required(allowed_roles=[]):
     def decorator(view_func):
         def wrap(request, *args, **kwargs):
+            print(request.user.detail.user_type)
             if request.user.detail.user_type in allowed_roles:
                 return view_func(request, *args, **kwargs)
             else:

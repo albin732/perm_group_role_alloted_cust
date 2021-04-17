@@ -17,6 +17,11 @@
                     <a href="{% url 'customer_detail' customer.pk %}">{{ customer.customer_name }}</a>
                          | {{ customer.customer_email }}
                     </a>
+                    {% if request.user.is_superuser %}|
+                        {% for cust in customer.owner_assigned.all %}
+                            {{ cust }}
+                        {% endfor %}|
+                    {% endif %}
                     &nbsp;&nbsp;
                     [
                     <a href="{% url 'customer_edit' customer.pk %}">Edit</a>

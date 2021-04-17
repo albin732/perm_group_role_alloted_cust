@@ -53,9 +53,10 @@ class Customer_ListView(ListView):
 
     def get_queryset(self):
         if self.request.user.is_superuser:
+            # CustomerModel.objects.values_list('owner_assigned',flat=True)
             return CustomerModel.objects.all()
         else:
-            return CustomerModel.objects.filter(assigned_admin=self.request.user)
+            return CustomerModel.objects.filter(owner_assigned=self.request.user)
 
 
 @method_decorator(sub_admin_decorators, name="dispatch")
@@ -68,4 +69,4 @@ class Customer_DetailView(DetailView):
         if self.request.user.is_superuser:
             return CustomerModel.objects.all()
         else:
-            return CustomerModel.objects.filter(assigned_admin=self.request.user)
+            return CustomerModel.objects.filter(owner_assigned=self.request.user)

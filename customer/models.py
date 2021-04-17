@@ -8,8 +8,8 @@ class CustomerModel(models.Model):
         max_length=100, unique=True, blank=False)
     customer_number = models.CharField(max_length=15, blank=True)
     customer_address = models.TextField()
-    assigned_admin = models.ForeignKey(
-        User, on_delete=models.CASCADE)
+    owner_assigned = models.ManyToManyField(
+        User)
 
     class Meta:
         db_table = "customer"
